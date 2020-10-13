@@ -17,7 +17,7 @@ services:
                 ports:
                         - 30303:30303/tcp
                         - 30303:30303/udp
-                        - 127.0.0.1:8545:8545
+                        - 8545:8545
                 volumes:
                         - ./geth:/root/.ethereum
                 <<: *logging
@@ -69,7 +69,7 @@ services:
                 hostname: prometheus
                 command: --storage.tsdb.retention.time=31d --config.file=/etc/prometheus/prometheus.yml
                 ports:
-                        - 127.0.0.1:9090:9090
+                        - 9090:9090
                 volumes:
                         - ./config/prometheus.yaml:/etc/prometheus/prometheus.yml
                         - ./prometheus:/prometheus
@@ -82,7 +82,7 @@ services:
                 depends_on:
                         - prometheus
                 ports:
-                        - 127.0.0.1:3000:3000
+                        - 3000:3000
                 volumes:
                         - ./grafana/provisioning:/etc/grafana/provisioning
                         - grafana_data:/var/lib/grafana
